@@ -1,20 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ListItemText from '@material-ui/core/ListItemText';
+
+import Typography from '@material-ui/core/Typography';
+
+const painTypes = [
+  'Injury',
+  'Menstrual',
+  'Arthritis',
+  'Illness',
+  'Flare-Up',
+];
 
 const PainList = () => (
-    <div className="PainList__container">
-        <h1>PAIN</h1>
-        Type of Pains
-        <ul className='PainList__list'>
-            <li><Link to='/pain/products'>Chronic</Link></li>
-            <li>Injury</li>
-            <li>Menstrual</li>
-            <li>Arthritis</li>
-            <li>Illness</li>
-            <li>Flare-Up</li>
-        </ul>
-
-    </div>
+  <div className="PainList__container">
+    <List component="nav">
+      <ListSubheader>Type of Pains</ListSubheader>
+      <Link to="/pain/products">
+        <ListItem button>
+          <ListItemText>
+            Chronic
+          </ListItemText>
+        </ListItem>
+      </Link>
+      {
+        painTypes.map(item => (
+          <Link to="/pain/products">
+            <ListItem button key={item}>
+              <ListItemText>
+                {item}
+              </ListItemText>
+            </ListItem>
+          </Link>
+        ))
+      }
+    </List>
+  </div>
 );
 
 export default PainList;
