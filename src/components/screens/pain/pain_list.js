@@ -5,7 +5,6 @@ import ListItem from '@material-ui/core/ListItem';
 import ListSubheader from '@material-ui/core/ListSubheader';
 import ListItemText from '@material-ui/core/ListItemText';
 
-import Typography from '@material-ui/core/Typography';
 
 const painTypes = [
   'Injury',
