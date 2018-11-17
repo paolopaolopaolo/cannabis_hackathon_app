@@ -12,6 +12,7 @@ import './App.css';
 import * as Screens from './components/screens';
 import * as Containers from './components/containers';
 import PainList from './components/screens/pain/pain_list';
+import Products from './components/screens/pain/products';
 
 /*
  - Need to tell if a user is logged in or not, and route them
@@ -26,6 +27,10 @@ class App extends Component {
 
   static defaultProps = {
     user: {},
+  }
+
+  componentDidMount () {
+      this.props.init();
   }
 
   render() {
@@ -44,7 +49,7 @@ class App extends Component {
           <Switch>
             <Route path="/" exact component={Screens.Home} />
             <Route path="/pain" exact component={PainList} />
-            <Route path="/pain/products" exact component={() => <div>PAIN PRODUCTS</div>} />
+            <Route path="/pain/products" exact component={Products} />
             <Route path="/dashboard" exact component={Screens.Dash} />
             <Route path="/login" exact component={Screens.Login} />
             <Route path="/signup" exact component={Screens.SignUp} />
@@ -61,7 +66,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  init: user => dispatch(Actions.Product.initApp(user)),
+  init: user => dispatch(Actions.Products.initApp(user)),
 });
 
 
