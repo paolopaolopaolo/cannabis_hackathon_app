@@ -5,6 +5,8 @@ import {
   Link,
   Switch,
 } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 
 import './App.css';
 import * as Screens from './components/screens';
@@ -16,12 +18,16 @@ import * as Screens from './components/screens';
 
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
-  state = {
-    user: null,
+  static propTypes = {
+    user: PropTypes.object, // eslint-disable-line
+  }
+
+  static defaultProps = {
+    user: {},
   }
 
   render() {
-    const { user } = this.state;
+    const { user } = this.props;
     if (!user) {
       // User not authd.
       return (
@@ -50,4 +56,13 @@ class App extends Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+const ConnectedApp = connect(
+  mapStateToProps,
+  // mapDispatchToProps,
+)(App);
+
+export default ConnectedApp;
