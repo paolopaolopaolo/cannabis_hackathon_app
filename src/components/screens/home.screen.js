@@ -2,17 +2,23 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import './home.style.css';
 
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import ListItemText from '@material-ui/core/ListItemText';
+
+
 const MALADIES = [
-    'SLEEP',
-    'PAIN',
-    'ANXIETY',
-    'SEX',
-    'CANCER',
-    'SPASMS',
-    'PMS',
-    'MENTOL',
-    'ETC.',
-]
+  'SLEEP',
+  'PAIN',
+  'ANXIETY',
+  'SEX',
+  'CANCER',
+  'SPASMS',
+  'PMS',
+  'MENTOL',
+  'ETC.',
+];
 
 export default class HomeScreen extends Component {
   static displayName = 'HomeScreen';
@@ -34,14 +40,18 @@ export default class HomeScreen extends Component {
       return ('Loading');
     }
     return (
-      <div className='Home__container'>
-        What are you experiencing?
-        <ul className='Home__list'>
-            {MALADIES.map((malady) => {
-                return <li className='Home__list-item'><Link to={`/${malady.toLowerCase()}`}>{malady}</Link></li>
-            })}
-        </ul>
-      </div>
+      <List component="nav">
+        <ListSubheader>What are you experiencing?</ListSubheader>
+        {MALADIES.map(malady => (
+          <Link to={`/${malady.toLowerCase()}`}>
+            <ListItem button className="Home__list-item">
+              <ListItemText>
+                {malady}
+              </ListItemText>
+            </ListItem>
+          </Link>
+        ))}
+      </List>
     );
   }
 }
