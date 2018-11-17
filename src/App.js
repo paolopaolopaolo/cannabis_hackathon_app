@@ -8,6 +8,7 @@ import {
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import Actions from './actions';
 import './App.css';
 import * as Screens from './components/screens';
 
@@ -28,7 +29,7 @@ class App extends Component {
 
   render() {
     const { user } = this.props;
-    if (!user) {
+    if (!user || !user.authenticated) {
       // User not authd.
       return (
         <Screens.Login />
@@ -60,9 +61,14 @@ const mapStateToProps = state => ({
   user: state.user,
 });
 
+const mapDispatchToProps = dispatch => ({
+  init: user => dispatch(Actions.Product.initApp(user)),
+});
+
+
 const ConnectedApp = connect(
   mapStateToProps,
-  // mapDispatchToProps,
+  mapDispatchToProps,
 )(App);
 
 export default ConnectedApp;

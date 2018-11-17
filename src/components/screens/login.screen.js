@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Button from '@material-ui/core/Button';
 import Card from '@material-ui/core/Card';
@@ -6,6 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
+
+import Actions from '../../actions';
 
 const styles = {
   container: {
@@ -17,7 +21,11 @@ const styles = {
   },
 };
 
-export default class LoginScreen extends Component {
+export class LoginScreen extends Component {
+  static propTypes = {
+    onUserSignUp: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props);
 
@@ -39,6 +47,12 @@ export default class LoginScreen extends Component {
     this.setState({
       user: Object.assign({}, user, newUser),
     });
+  }
+
+  onSubmitClicked = () => {
+    const { onUserSignUp } = this.props;
+    const { user } = this.state;
+    onUserSignUp(user);
   }
 
   render() {
@@ -77,10 +91,18 @@ export default class LoginScreen extends Component {
             </form>
           </CardContent>
           <CardActions>
-            <Button size="small" color="primary">
+            <Button
+              size="small"
+              color="primary"
+              onClick={this.onSubmitClicked}
+            >
               Login
             </Button>
-            <Button size="small" color="primary">
+            <Button
+              size="small"
+              color="primary"
+              onClick={this.onSubmitClicked}
+            >
               Sign Up
             </Button>
           </CardActions>
@@ -89,3 +111,12 @@ export default class LoginScreen extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = dispatch => ({
+  onUserSignUp: user => dispatch(Actions.User.loginUser(user)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
