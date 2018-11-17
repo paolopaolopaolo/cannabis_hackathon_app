@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import * as Screens from './components/screens';
+import PainList from './components/screens/pain/pain_list';
 
 /*
  - Need to tell if a user is logged in or not, and route them
@@ -45,6 +46,8 @@ class App extends Component {
           </ul>
           <Switch>
             <Route path="/" exact component={Screens.Home} />
+            <Route path="/pain" exact component={PainList} />
+            <Route path="/pain/products" exact component={() => <div>PAIN PRODUCTS</div>} />
             <Route path="/dashboard" exact component={Screens.Dash} />
             <Route path="/login" exact component={Screens.Login} />
             <Route path="/signup" exact component={Screens.SignUp} />

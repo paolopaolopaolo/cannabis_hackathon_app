@@ -1,0 +1,16 @@
+
+.Home__container {
+    background-color: pink;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.Home__list {
+    list-style-type: none
+}
+
+.Home__list-item {
+    margin: 2.5rem 0;
+}

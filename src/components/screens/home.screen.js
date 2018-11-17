@@ -1,5 +1,18 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import './home.style.css';
+
+const MALADIES = [
+    'SLEEP',
+    'PAIN',
+    'ANXIETY',
+    'SEX',
+    'CANCER',
+    'SPASMS',
+    'PMS',
+    'MENTOL',
+    'ETC.',
+]
 
 export default class HomeScreen extends Component {
   static displayName = 'HomeScreen';
@@ -11,7 +24,7 @@ export default class HomeScreen extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      loading: true,
+      loading: false,
     };
   }
 
@@ -21,8 +34,13 @@ export default class HomeScreen extends Component {
       return ('Loading');
     }
     return (
-      <div>
-        Hello World
+      <div className='Home__container'>
+        What are you experiencing?
+        <ul className='Home__list'>
+            {MALADIES.map((malady) => {
+                return <li className='Home__list-item'><Link to={`/${malady.toLowerCase()}`}>{malady}</Link></li>
+            })}
+        </ul>
       </div>
     );
   }
