@@ -9,9 +9,26 @@ import {
 import './App.css';
 import * as Screens from './components/screens';
 
+/*
+ - Need to tell if a user is logged in or not, and route them
+  to the authentication if they aren't.
+*/
+
 // eslint-disable-next-line react/prefer-stateless-function
 class App extends Component {
+  state = {
+    user: null,
+  }
+
   render() {
+    const { user } = this.state;
+    if (!user) {
+      // User not authd.
+      return (
+        <Screens.Login />
+      );
+    }
+
     return (
       <Router>
         <div>
@@ -21,8 +38,10 @@ class App extends Component {
             <li><Link to="/adfa">404</Link></li>
           </ul>
           <Switch>
-            <Route path="/" exact component={Screens.HomeScreen} />
-            <Route path="/dashboard" exact component={Screens.DashScreen} />
+            <Route path="/" exact component={Screens.Home} />
+            <Route path="/dashboard" exact component={Screens.Dash} />
+            <Route path="/login" exact component={Screens.Login} />
+            <Route path="/signup" exact component={Screens.SignUp} />
             <Route component={Screens.NoMatch} />
           </Switch>
         </div>
