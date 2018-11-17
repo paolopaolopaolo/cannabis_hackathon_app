@@ -1,0 +1,6 @@
+
+.PainList__list {
+    display: flex;
+    flex-flow: row wrap;
+    list-style: none;
+}
