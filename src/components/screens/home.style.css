@@ -1,6 +1,6 @@
 
 .Home__container {
-    background-color: pink;
+    /* background-color: pink; */
     display: flex;
     flex-flow: column;
     align-items: center;
@@ -13,4 +13,9 @@
 
 .Home__list-item {
     margin: 2.5rem 0;
+}
+
+.link {
+  color: #fff;
+  text-decoration: none;
 }

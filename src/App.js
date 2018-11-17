@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
   Switch,
 } from 'react-router-dom';
 import PropTypes from 'prop-types';
@@ -11,6 +10,7 @@ import { connect } from 'react-redux';
 import Actions from './actions';
 import './App.css';
 import * as Screens from './components/screens';
+import * as Containers from './components/containers';
 import PainList from './components/screens/pain/pain_list';
 
 /*
@@ -40,11 +40,7 @@ class App extends Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/dashboard">Dash</Link></li>
-            <li><Link to="/adfa">404</Link></li>
-          </ul>
+          <Containers.Nav />
           <Switch>
             <Route path="/" exact component={Screens.Home} />
             <Route path="/pain" exact component={PainList} />
