@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import Actions from '../../../actions';
 import './products.css';
 
@@ -35,12 +37,14 @@ class Products extends Component {
         <h2>Treatments</h2>
         <ul className="Products__list">
           {products.map(product => (
-            <li>
-              <h3>{product.name}</h3>
-              <p>
-                {product.price || product.pricing.unit.value} - {product.distributor || product.brand}
-              </p>
-            </li>
+            <Link to={`/pain/products/${product._id}`}>
+              <li>
+                <h3>{product.name}</h3>
+                <p>
+                  {product.price || product.pricing.unit.value} - {product.distributor || product.brand}
+                </p>
+              </li>
+            </Link>
           ))
           }
         </ul>

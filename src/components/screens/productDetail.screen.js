@@ -28,25 +28,40 @@ export class ProductDetail extends Component {
   }
 
   render() {
-    const { products } = this.props;
+    const { products, location } = this.props; // eslint-disable-line
+    console.log(location);
+    const id = location.pathname.split('/').pop();
+    const product = products.find(item => (item._id === id || item.id === 1));
 
-    const product = products.find(item => (item.id === 1));
-    return (
-      <Card>
-        <CardContent>
-          <CardMedia
-            className="card-media"
-            image="https://www.placecage.com/gif/500/300"
-          />
-          <Typography variant="h2">
-            Product Detail
-          </Typography>
-          <Typography variant="h5">
-            {product.name}
-          </Typography>
-        </CardContent>
-      </Card>
-    );
+    let card;
+    if (product.photos[0]) {
+      card = (
+        <CardMedia
+          className="card-media"
+          image={product.photos[0]}
+        />
+      );
+    }
+
+    if (product) {
+      return (
+        <Card>
+          <CardContent>
+            {card}
+            <Typography variant="h2">
+              Product Detail
+            </Typography>
+            <Typography variant="h5">
+              {product.name}
+            </Typography>
+            <p>
+              {product.description}
+            </p>
+          </CardContent>
+        </Card>
+      );
+    }
+    return (<div>Loading</div>);
   }
 }
 
