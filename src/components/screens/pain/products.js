@@ -24,7 +24,7 @@ class Products extends Component {
   }
 
   componentDidMount() {
-      getProducts(this.props);
+    getProducts(this.props);
   }
 
   render() {
@@ -37,9 +37,11 @@ class Products extends Component {
           {products.map(product => (
             <li>
               <h3>{product.name}</h3>
-              <p>{product.price || product.pricing.unit.value} - {product.distributor || product.brand}</p>
+              <p>
+                {product.price || product.pricing.unit.value} - {product.distributor || product.brand}
+              </p>
             </li>
-            ))
+          ))
           }
         </ul>
       </div>
