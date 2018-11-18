@@ -43,6 +43,7 @@ export class LoginScreen extends Component {
     const { target: { value } } = event;
 
     const newUser = {};
+
     newUser[field] = value;
     this.setState({
       user: Object.assign({}, user, newUser),
@@ -53,6 +54,16 @@ export class LoginScreen extends Component {
     const { onUserSignUp } = this.props;
     const { user } = this.state;
     onUserSignUp(user);
+  }
+
+  onKeyUp = ({ nativeEvent }) => {
+    if (nativeEvent.keyCode === 13) {
+      this.onSubmit();
+    }
+  }
+
+  onSubmit = () => {
+    this.onSubmitClicked();
   }
 
   render() {
@@ -66,9 +77,10 @@ export class LoginScreen extends Component {
             <Typography variant="h5" component="h1">
               Login
             </Typography>
-            <form action="#">
+            <form action="#" onSubmit={this.onSubmit}>
               <div>
                 <TextField
+                  onKeyUp={this.onKeyUp}
                   style={styles.input}
                   required
                   label="Username"
@@ -79,6 +91,7 @@ export class LoginScreen extends Component {
               </div>
               <div>
                 <TextField
+                  onKeyUp={this.onKeyUp}
                   style={styles.input}
                   required
                   label="Password"

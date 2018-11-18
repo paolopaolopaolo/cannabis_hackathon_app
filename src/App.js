@@ -29,8 +29,8 @@ class App extends Component {
     user: {},
   }
 
-  componentDidMount () {
-      this.props.init();
+  componentDidMount() {
+    this.props.init();
   }
 
   render() {
