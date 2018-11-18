@@ -9,7 +9,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-
+import { withStyles } from '@material-ui/core/styles';
 
 import './pain/products.css';
 
@@ -57,6 +57,9 @@ export class ProductDetail extends Component {
               {product.description}
             </p>
           </CardContent>
+          <CardActions>
+            <Button color="primary">Buy</Button>
+          </CardActions>
         </Card>
       );
     }
@@ -68,4 +71,5 @@ const mapStateToProps = state => ({
   products: state.products.all,
 });
 
-export default connect(mapStateToProps)(ProductDetail);
+const StyledProductDetail = withStyles()(ProductDetail)
+export default connect(mapStateToProps)(StyledProductDetail);
