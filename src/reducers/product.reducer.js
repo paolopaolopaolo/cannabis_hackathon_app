@@ -28,6 +28,12 @@ export default (state = initialState, action) => {
         all: fakeProducts,
         ids: fakeProducts.map(item => item.id),
       });
+    case 'SET_PRODUCTS':
+      return {
+        ...state,
+        all: action.data,
+        ids: action.data.map(item => item.id)
+      }
     default:
       return state;
   }
