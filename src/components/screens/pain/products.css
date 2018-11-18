@@ -2,3 +2,9 @@
 .Products__list {
     list-style-type: none;
 }
+
+
+.card-media {
+  min-height: 300px;
+  margin-bottom: 16px;
+}
