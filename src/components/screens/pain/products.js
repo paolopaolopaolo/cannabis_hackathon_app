@@ -36,6 +36,9 @@ class Products extends Component {
         <h1>Pain</h1>
         <h2>Treatments</h2>
         <ul className="Products__list">
+          { products.length === 0 && (
+            <div>Loading...</div>
+          )}
           {products.map(product => (
             <Link to={`/pain/products/${product._id}`}>
               <li>

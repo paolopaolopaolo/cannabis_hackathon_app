@@ -29,9 +29,8 @@ export class ProductDetail extends Component {
 
   render() {
     const { products, location } = this.props; // eslint-disable-line
-    console.log(location);
     const id = location.pathname.split('/').pop();
-    const product = products.find(item => (item._id === id || item.id === 1));
+    const product = products.find(item => (item._id === id)); // eslint-disable-line
 
     let card;
     if (product.photos[0]) {
