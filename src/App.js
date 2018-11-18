@@ -11,8 +11,6 @@ import Actions from './actions';
 import './App.css';
 import * as Screens from './components/screens';
 import * as Containers from './components/containers';
-import PainList from './components/screens/pain/pain_list';
-import Products from './components/screens/pain/products';
 
 /*
  - Need to tell if a user is logged in or not, and route them
@@ -48,8 +46,9 @@ class App extends Component {
           <Containers.Nav />
           <Switch>
             <Route path="/" exact component={Screens.Home} />
-            <Route path="/pain" exact component={PainList} />
-            <Route path="/pain/products" exact component={Products} />
+            <Route path="/pain" exact component={Screens.PainList} />
+            <Route path="/pain/products" exact component={Screens.Products} />
+            <Route path="/pain/products/:id" exact component={Screens.ProductDetail} />
             <Route path="/dashboard" exact component={Screens.Dash} />
             <Route path="/login" exact component={Screens.Login} />
             <Route path="/signup" exact component={Screens.SignUp} />
